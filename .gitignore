@@ -1,0 +1,28 @@
+# Ignore raw simulation data files
+*.raw
+
+# Ignore log files
+*.log
+
+# Ignore operational point files
+*.op.raw
+
+# Ignore any backup or temporary files
+*.bak
+*.tmp
+*.swp
+*.swo
+
+# Ignore zip files and other archives
+*.zip
+*.tar
+*.gz
+*.7z
+
+# Ignore hidden files (e.g., .DS_Store on macOS)
+.DS_Store
+
+# Ignore IDE or editor-specific files (if applicable)
+.vscode/
+.idea/
+*.iml
