@@ -1,0 +1,21 @@
+* C:\Users\mohammad asfraf\OneDrive\Documents\Lab Work\LT Circuits\VLSI\CMOS_Inv_Trans.asc
+V1 N001 0 5
+V2 vin 0 PULSE(0 5 8n 5n 5n 20n 60n)
+C1 vout 0 1pf
+M1 vout vin N001 N001 PMOS l=350n w=8u
+M2 vout vin 0 0 NMOS l=350n w=4u
+.model NMOS NMOS
+.model PMOS PMOS
+.lib C:\Users\mohammad asfraf\OneDrive\Documents\LTspiceXVII\lib\cmp\standard.mos
+.include C:\Users\mohammad asfraf\OneDrive\Documents\LTspiceXVII\lib\p35\p35_cmos_models_tt.inc
+.meas time1 FIND time WHEN  V(vin)=2.5V RISE=1
+.meas time2 FIND time WHEN  V(vout)=2.5V FALL=1
+.meas tPHL param time2-time1
+.meas time3 FIND time WHEN  V(vin)=2.5V FALL=1
+.meas time4 FIND time WHEN  V(vout)=2.5V RISE=1
+.meas tPLH param time4-time3
+.model nmos1(W=4u L=350n vto=0.48 Kp=1.24m)
+.model pmos1 pmos(W=8u L=350n vto=-0.6 Kp=0.48u)
+.tran 50n
+.backanno
+.end

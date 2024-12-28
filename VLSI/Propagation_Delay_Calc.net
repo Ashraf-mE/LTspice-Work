@@ -1,0 +1,18 @@
+* C:\Users\mohammad asfraf\OneDrive\Documents\Lab Work\LT Circuits\VLSI\Propagation_Delay_Calc.asc
+M1 vout vin N001 N001 BSS84
+M2 vout vin 0 0 BSP89
+V1 N001 0 5
+V2 vin 0 PULSE(0 5 8n 5n 5n 20n 60n)
+.model NMOS NMOS
+.model PMOS PMOS
+.lib C:\Users\mohammad asfraf\OneDrive\Documents\LTspiceXVII\lib\cmp\standard.mos
+.include C:\Users\mohammad asfraf\OneDrive\Documents\LTspiceXVII\lib\p35\p35_cmos_models_tt.inc
+.meas time1 FIND time WHEN  V(vin)=2.5V RISE=1
+.meas time2 FIND time WHEN  V(vout)=2.5V FALL=1
+.meas tPHL param time2-time1
+.meas time3 FIND time WHEN  V(vin)=2.5V FALL=1
+.meas time4 FIND time WHEN  V(vout)=2.5V RISE=1
+.meas tLH param time4-time3
+.tran 50n
+.backanno
+.end
